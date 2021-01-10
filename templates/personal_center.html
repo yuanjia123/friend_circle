@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}个人中心{% endblock %}
+{% block head %}
+    <style>
+        #up_d{
+            margin: auto;
+            border: 1px solid #ff0000;
+            width: 800px;
+            height: 370px;
+        }
+
+        #text_content{
+            width: 800px;
+            height: 100px;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div id = 'up_d'>
+        <form action="{% url 'personal_center' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table border="1px">
+               <tr>
+                   <td>头像:</td>
+                   <td>
+                       {{ form.img_url}}
+                   </td>
+               </tr>
+
+                <tr>
+                    <td>年龄:</td>
+                    <td>{{ form.age }}</td>
+                </tr>
+
+                <tr>
+                    <td>手机号：</td>
+                    <td>{{ form.phone }}</td>
+                </tr>
+                 <tr>
+                    <td>地址：</td>
+                    <td>{{ form.address }}</td>
+                </tr>
+                <tr>
+                    <td>个性签名:</td>
+                    <td>{{ form.content }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" value="提交"></td>
+                </tr>
+            </table>
+
+        </form>
+        {{ msg }}
+    </div>
+{% endblock %}
+
+{#{% block main %}#}
+{#    <div id = 'up_d'>#}
+{#        <form action="{% url 'personal_center' %}" method="post" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#            <table>#}
+{#                <tr>#}
+{#                    {{ form.content }}#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    {% if s_all %}#}
+{#                        <table border="1px">#}
+{#                            {% for s in s_all %}#}
+{#                                    <td><img src="{{ MEDIA_URL }}{{ s.photo }}" width="100px" height="100px"></td>#}
+{#                            {% endfor %}#}
+{#                        </table>#}
+{#                    {% endif %}#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    {{ form.img }}#}
+{#                </tr>#}
+{##}
+{#            </table>#}
+{#            <input type="submit" value="提交">#}
+{#    </form>#}
+{#    {{ msg }}#}
+{#    </div>#}
+{#{% endblock %}#}

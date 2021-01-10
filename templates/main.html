@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}主页{% endblock %}
+{% block head %}
+    <style>
+            #content_main{
+                margin: auto;
+                border: 1px solid #ff0000;
+                width: 800px;
+                height: 370px;
+            }
+
+            #img_header{
+                    margin: 11px;
+                    border: 1px solid #ff0000;
+                    width: 60px;
+                    height: 60px;
+            }
+            #text_content{
+                    margin: 25px;
+                    border: 1px solid chartreuse;
+                    width: 750px;
+                    height: 130px;
+            }
+
+            #img_pricture{
+                    margin-top: -15px;
+                    border: 1px solid gold;
+                    width: 795px;
+                    height: 132px;
+            }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div id = "content_main">
+        <div id = 'img_header'>
+            照片显示
+        </div>
+
+        <div id = "text_content">
+            文本显示
+        </div>
+
+        <div id = "img_pricture">
+            照片显示
+        </div>
+{#        {% if request.user.is_authenticated %}#}
+{#            {{ request.user.username }}#}
+{#        {% endif %}#}
+    </div>
+
+{% endblock %}
