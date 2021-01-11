@@ -115,11 +115,8 @@ def edit(request):
     u = UserProfile.objects.filter(username=request.user.username).first()
     if request.method == "POST":
         img_url = request.FILES.get('img')
-        u.img_url = img_url
-
-        username = request.POST.get("username")
-        if username:
-            u.username = username
+        if img_url:
+            u.img_url = img_url
 
         phone = request.POST.get("phone")
         if phone:
@@ -141,3 +138,7 @@ def edit(request):
         print("图片修改成功")
         return redirect("personal_center")
     return render(request,"edit.html",{"u":u})
+
+
+def share_meg(request):
+    return render(request,'share_meg.html')

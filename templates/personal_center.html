@@ -29,6 +29,16 @@
                     <td>姓名:</td>
                     <td>{{ u.username }}</td>
                 </tr>
+
+                <tr>
+                    <td>性别:</td>
+                    {% if u.sex == 1 %}
+                        <td>男</td>
+                    {% else %}
+                        <td>女</td>
+                    {% endif %}
+                </tr>
+
                 <tr>
                     <td>手机号:</td>
                     <td>{{ u.phone }}</td>

@@ -119,6 +119,14 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+
+#staticfile 把静态文件(CSS、JS)拿出来、需要配置路径
+STATICFILES_DIRS = [
+    #"D:\django框架\message_third\static"
+    os.path.join(BASE_DIR, 'static')
+]
+
+
 # 文件上传配置  (写入文件)  所有上传的文件都在media下面   (指定文件上传的相对路径media/imgs/)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
