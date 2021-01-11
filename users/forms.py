@@ -30,6 +30,8 @@ class LoginForm(forms.Form):
 #     img = forms.ImageField(label="照片",required=False)  #required=True必填字段
 
 class Userdetail(forms.ModelForm):
+
     class Meta:
         model = UserProfile
         fields = ['sex','phone','address','age','img_url','content']
+

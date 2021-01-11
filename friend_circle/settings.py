@@ -54,6 +54,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #要显示照片就要加上这个 中间键 context_processors.media
                 'django.template.context_processors.media'
             ],
         },

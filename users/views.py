@@ -88,34 +88,8 @@ def Main_View(request):
 
 
 def Personal_center(request):
-
-    if request.method == "POST":
-        print("来了没222")
-        form = Userdetail(request.POST)
-        if form.is_valid():
-            print("来了没")
-            one = UserProfile.objects.filter(username=request.user.username).first()
-            sex = form.cleaned_data["sex"]
-            phone = form.cleaned_data["phone"]
-            address = form.cleaned_data["address"]
-            age = form.cleaned_data["age"]
-            img_url = request.FILES.get('img_url')
-            one.sex = sex
-            one.phone = phone
-            one.address = address
-            one.age = age
-            one.img_url = img_url
-            one.save()
-            return HttpResponse("提交成功")
-            # return redirect("main")
-        else:
-            print("验证没有通过")
-
-    else:
-        print("来了没111")
-        one = UserProfile.objects.filter(username=request.user.username).first()
-        form = Userdetail()
-        return render(request, 'personal_center.html', {'form': form, "one": one})
+    u = UserProfile.objects.filter(username = request.user.username).first()
+    return render(request, 'personal_center.html',{"u":u})
 
     # one = Friend_Message.objects.filter(username=request.user.username).first()
     # if request.method == "POST":
@@ -131,3 +105,39 @@ def Personal_center(request):
     #     form = File_Form()
     #
     # return render(request,'personal_center.html',{'form': form,"one":one})
+
+
+def hello(request):
+    return render(request,"hello.html")
+
+
+def edit(request):
+    u = UserProfile.objects.filter(username=request.user.username).first()
+    if request.method == "POST":
+        img_url = request.FILES.get('img')
+        u.img_url = img_url
+
+        username = request.POST.get("username")
+        if username:
+            u.username = username
+
+        phone = request.POST.get("phone")
+        if phone:
+            u.phone = phone
+
+        address = request.POST.get("address")
+        if address:
+            u.address = address
+
+        age = request.POST.get("age")
+        if age:
+            u.age = age
+
+        content = request.POST.get("content")
+        if content:
+            u.content = content
+
+        u.save()
+        print("图片修改成功")
+        return redirect("personal_center")
+    return render(request,"edit.html",{"u":u})
